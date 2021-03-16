@@ -1,0 +1,67 @@
+[debug] [2021-03-16T12:56:57.485Z] ----------------------------------------------------------------------
+[debug] [2021-03-16T12:56:57.488Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\PICHAU\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2021-03-16T12:56:57.489Z] CLI Version:   9.6.1
+[debug] [2021-03-16T12:56:57.489Z] Platform:      win32
+[debug] [2021-03-16T12:56:57.489Z] Node Version:  v15.5.1
+[debug] [2021-03-16T12:56:57.490Z] Time:          Tue Mar 16 2021 09:56:57 GMT-0300 (Horário Padrão de Brasília)
+[debug] [2021-03-16T12:56:57.490Z] ----------------------------------------------------------------------
+[debug] [2021-03-16T12:56:57.490Z] 
+[debug] [2021-03-16T12:56:57.497Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2021-03-16T12:56:57.498Z] > authorizing via signed-in user
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  C:\Projetos\SilFazendoArte\Silfazendoarte
+
+Before we get started, keep in mind:
+
+  * You are currently outside your home directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2021-03-16T12:57:06.104Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=100
+[debug] [2021-03-16T12:57:06.588Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects 200
+[debug] [2021-03-16T12:57:06.588Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects [omitted]
+[info] i  Using project silfazendoarte-984f4 (SilFazendoArte) 
+[info] 
+=== Hosting Setup
+[info] 
+[info] Your public directory is the folder (relative to your project directory) that
+[info] will contain Hosting assets to be uploaded with firebase deploy. If you
+[info] have a build process for your assets, use your build's output directory.
+[info] 
+[debug] [2021-03-16T12:57:32.789Z] >>> [apiv2][query] GET https://www.gstatic.com/firebasejs/releases.json [none]
+[debug] [2021-03-16T12:57:32.952Z] <<< [apiv2][status] GET https://www.gstatic.com/firebasejs/releases.json 200
+[debug] [2021-03-16T12:57:32.953Z] <<< [apiv2][body] GET https://www.gstatic.com/firebasejs/releases.json {"current":{"version":"8.3.0","browserURL":"https://www.gstatic.com/firebasejs/8.3.0/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/8.3.0/firebase.tgz"},"live":{"version":"8.3","browserURL":"https://www.gstatic.com/firebasejs/live/8.3/firebase.js","packageURL":"https://www.gstatic.com/firebasejs/live/8.3/firebase.tgz"},"components":{"analytics":"https://www.gstatic.com/firebasejs/8.3.0/firebase-analytics.js","app":"https://www.gstatic.com/firebasejs/8.3.0/firebase-app.js","auth":"https://www.gstatic.com/firebasejs/8.3.0/firebase-auth.js","database":"https://www.gstatic.com/firebasejs/8.3.0/firebase-database.js","firestore":"https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.js","functions":"https://www.gstatic.com/firebasejs/8.3.0/firebase-functions.js","installations":"https://www.gstatic.com/firebasejs/8.3.0/firebase-installations.js","messaging":"https://www.gstatic.com/firebasejs/8.3.0/firebase-messaging.js","storage":"https://www.gstatic.com/firebasejs/8.3.0/firebase-storage.js","performance":"https://www.gstatic.com/firebasejs/8.3.0/firebase-performance.js","remote-config":"https://www.gstatic.com/firebasejs/8.3.0/firebase-remote-config.js","firestore.memory":"https://www.gstatic.com/firebasejs/8.3.0/firebase-firestore.memory.js"}}
+[info] +  Wrote y/index.html 
+[info] 
+[info] i  Detected a .git folder at C:\Projetos\SilFazendoArte\Silfazendoarte 
+[info] i  Authorizing with GitHub to upload your service account to a GitHub repository's secrets store. 
+[info] 
+[info] Visit this URL on this device to log in:
+[info] https://github.com/login/oauth/authorize?client_id=89cf50f02ac6aaed3484&state=716766556&redirect_uri=http%3A%2F%2Flocalhost%3A9005&scope=read%3Auser%20repo%20public_repo
+[info] 
+[info] Waiting for authentication...
+[debug] [2021-03-16T12:59:32.826Z] >>> HTTP REQUEST POST https://github.com/login/oauth/access_token  
+ {"client_id":"89cf50f02ac6aaed3484","client_secret":"3330d14abc895d9a74d5f17cd7a00711fa2c5bf0","code":"8914c301ff83ac9c5f16","redirect_uri":"http://localhost:9005","state":"716766556"}
+[debug] [2021-03-16T12:59:33.385Z] <<< HTTP RESPONSE 200 {"server":"GitHub.com","date":"Tue, 16 Mar 2021 12:59:33 GMT","content-type":"application/json; charset=utf-8","transfer-encoding":"chunked","vary":"X-PJAX, Accept-Encoding, Accept, X-Requested-With","etag":"W/\"37300f8c6eb44eacc1686acc41ccf452\"","cache-control":"max-age=0, private, must-revalidate","strict-transport-security":"max-age=31536000; includeSubdomains; preload","x-frame-options":"deny","x-content-type-options":"nosniff","x-xss-protection":"0","referrer-policy":"origin-when-cross-origin, strict-origin-when-cross-origin","expect-ct":"max-age=2592000, report-uri=\"https://api.github.com/_private/browser/errors\"","content-security-policy":"default-src 'none'; base-uri 'self'; block-all-mixed-content; connect-src 'self' uploads.github.com www.githubstatus.com collector.githubapp.com api.github.com github-cloud.s3.amazonaws.com github-production-repository-file-5c1aeb.s3.amazonaws.com github-production-upload-manifest-file-7fdce7.s3.amazonaws.com github-production-user-asset-6210df.s3.amazonaws.com cdn.optimizely.com logx.optimizely.com/v1/events wss://alive.github.com; font-src github.githubassets.com; form-action 'self' github.com gist.github.com; frame-ancestors 'none'; frame-src render.githubusercontent.com; img-src 'self' data: github.githubassets.com identicons.github.com collector.githubapp.com github-cloud.s3.amazonaws.com secured-user-images.githubusercontent.com/ *.githubusercontent.com; manifest-src 'self'; media-src 'none'; script-src github.githubassets.com; style-src 'unsafe-inline' github.githubassets.com; worker-src github.com/socket-worker-6832eced.js gist.github.com/socket-worker-6832eced.js","x-github-request-id":"0757:3EFE:CB790A:1179360:6050ABB5"}
+[debug] [2021-03-16T12:59:33.392Z] >>> [apiv2][query] GET https://api.github.com/user [none]
+[debug] [2021-03-16T12:59:33.908Z] <<< [apiv2][status] GET https://api.github.com/user 200
+[debug] [2021-03-16T12:59:33.909Z] <<< [apiv2][body] GET https://api.github.com/user {"login":"moronisoares","id":56849251,"node_id":"MDQ6VXNlcjU2ODQ5MjUx","avatar_url":"https://avatars.githubusercontent.com/u/56849251?v=4","gravatar_id":"","url":"https://api.github.com/users/moronisoares","html_url":"https://github.com/moronisoares","followers_url":"https://api.github.com/users/moronisoares/followers","following_url":"https://api.github.com/users/moronisoares/following{/other_user}","gists_url":"https://api.github.com/users/moronisoares/gists{/gist_id}","starred_url":"https://api.github.com/users/moronisoares/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/moronisoares/subscriptions","organizations_url":"https://api.github.com/users/moronisoares/orgs","repos_url":"https://api.github.com/users/moronisoares/repos","events_url":"https://api.github.com/users/moronisoares/events{/privacy}","received_events_url":"https://api.github.com/users/moronisoares/received_events","type":"User","site_admin":false,"name":null,"company":null,"blog":"","location":null,"email":null,"hireable":null,"bio":null,"twitter_username":null,"public_repos":2,"public_gists":0,"followers":1,"following":0,"created_at":"2019-10-21T21:40:59Z","updated_at":"2021-03-16T12:59:14Z","private_gists":0,"total_private_repos":0,"owned_private_repos":0,"disk_usage":219,"collaborators":0,"two_factor_authentication":false,"plan":{"name":"free","space":976562499,"collaborators":0,"private_repos":10000}}
+[info] 
+[info] +  Success! Logged into GitHub as moronisoares 
+[info] 
+[debug] [2021-03-16T13:00:34.679Z] >>> [apiv2][query] GET https://api.github.com/repos/moronisoares/SilFazendoArte/actions/secrets/public-key type=owner
+[debug] [2021-03-16T13:00:35.145Z] <<< [apiv2][status] GET https://api.github.com/repos/moronisoares/SilFazendoArte/actions/secrets/public-key 404
+[debug] [2021-03-16T13:00:35.145Z] <<< [apiv2][body] GET https://api.github.com/repos/moronisoares/SilFazendoArte/actions/secrets/public-key {"message":"Not Found","documentation_url":"https://docs.github.com/rest/reference/actions#get-a-repository-public-key"}
