@@ -1,0 +1,36 @@
+.card {
+    width: 400px;
+    margin: auto auto;
+    padding: 32px;
+    background-color: #f7f7f7;
+    height: 440px;
+
+    .cardTitle {
+        text-align: center;
+        margin-bottom: 16px;
+
+        img {
+            width: 180px;
+            height: 160px;
+        }
+    }
+
+    .cardContent form mat-form-field,
+    .cardActions {
+        width: 100%;
+    }
+    
+    .cardActions {
+        text-align: center;
+        margin: 0;
+    }
+
+    .cardActions button {
+        width: 95%;
+    }
+}
+@media (max-width: 767px) {
+    .card {
+        width: 280px;
+    }
+}

@@ -1,0 +1,51 @@
+.card {
+    width: 75%;
+    margin: auto auto;
+    padding: 0;
+    background-color: #f7f7f7;
+    height: 85px;
+    margin-top: -60px;
+    .cardTitle {
+        text-align: center;
+        img {
+            margin-top: 4px;
+            width: 120px;
+            height: 75px;
+        }
+    }
+}
+
+.divProdutos {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.btnCarrinho{
+    width: 90%;
+    position: absolute;
+    bottom: 20px;
+    left: 5%;
+    z-index: 999;
+}
+
+@media (min-width: 768px) {
+    .divProdutos {
+        height: 1900px;
+    }
+    .cardProduto {
+        width: 160px;
+        height: 220px;
+        img {
+            height: 160px;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .card {
+        width: 100%;
+        position: absolute;
+        top: 16px;
+        left: 0;
+    }
+}

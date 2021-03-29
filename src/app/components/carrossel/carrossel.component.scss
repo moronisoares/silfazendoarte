@@ -1,0 +1,38 @@
+.foto {
+    width: 90%;
+    height: calc(20% + 200px);
+    margin: auto;
+    margin-top: 16px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.rowIndex {
+    justify-content: center;
+    display: inline-flex;
+    width: 100%;
+    position: relative;
+    top: -5px;
+}
+
+.indexMark {
+    opacity: 0.4;
+    background: #fd2858;
+    width: 6px;
+    height: 6px;
+    border-radius: 100%;
+    margin-left: 4px;
+    margin-right: 4px;
+}
+
+.indexMarkAtivo {
+    opacity: 1;
+}
+
+.arrows {
+    position: relative;
+    top: calc(25% - 20px);
+    height: 40px;
+    z-index: 999;
+}

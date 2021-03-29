@@ -1,0 +1,26 @@
+<mat-card class="card">
+    <mat-card-title class="cardTitle">
+        <img src="../../../assets/logo.jpg" />
+    </mat-card-title>
+    <mat-card-content class="cardContent">
+        <form [formGroup]="validateForm">
+            <mat-form-field appearance="outline">
+                <mat-label>Login</mat-label>
+                <input id="txtLogin" formControlName="Login" matInput placeholder="Login" (keyup.enter)="enterKey()">
+                <mat-icon matSuffix>person</mat-icon>
+                <mat-error *ngIf="form.Login.invalid">Login inválido</mat-error>
+            </mat-form-field>
+            <mat-form-field appearance="outline">
+                <mat-label>Senha</mat-label>
+                <input id="txtSenha" type="password" formControlName="Senha" matInput placeholder="Senha"
+                    (keyup.enter)="enterKey()">
+                <mat-icon matSuffix>vpn_key</mat-icon>
+                <mat-error *ngIf="form.Login.invalid">Senha inválida</mat-error>
+            </mat-form-field>
+        </form>
+    </mat-card-content>
+    <mat-card-actions class="cardActions">
+        <button mat-flat-button color="primary" (click)="login()" style="margin-bottom: 8px;">ENTRAR</button>
+        <button mat-flat-button color="accent" (click)="loja()">IR PARA LOJA</button>
+    </mat-card-actions>
+</mat-card>

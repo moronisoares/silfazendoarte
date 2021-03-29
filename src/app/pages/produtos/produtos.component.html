@@ -1,0 +1,33 @@
+<mat-card-header>
+    <mat-card-title>Lista de produtos</mat-card-title>
+</mat-card-header>
+<div style="overflow-y: auto; overflow-x: hidden; max-height: 90%;">
+    <mat-grid-list [cols]="deviceWidth >= 768? 2 : 1" [rowHeight]="deviceWidth >= 1600? '6:1' : deviceWidth >= 1100? '3:1' : '2:1'">
+        <mat-grid-tile *ngFor="let item of lstProdutos">
+            <mat-card class="card">
+                <mat-grid-list cols="4" [rowHeight]="deviceWidth >= 1600? '2:1' : '1:1'">
+                    <mat-grid-tile>
+                        <img mat-card-image [src]="item.FilePath[0]" class="imgProduto">
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p style="font-weight: 600; font-size: 12pt; text-align: center;">{{item.Nome}}</p>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p style="font-size: 10pt; text-align: center;">{{item.Valor | currency:'BRL':true:'1.2-2'}}</p>
+                    </mat-grid-tile>
+                    <mat-grid-tile style="text-align: right;">
+                        <button mat-icon-button color="accent" class="btnActions" (click)="modalCadastro(item)">
+                            <mat-icon>remove_red_eye</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent" class="btnActions" (click)="deleteProduto(item)">
+                            <mat-icon>delete_forever</mat-icon>
+                        </button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+<button mat-fab class="fab" color="accent" aria-label="Adicionar novo produto" (click)="modalCadastro()">
+    <mat-icon>add</mat-icon>
+</button>

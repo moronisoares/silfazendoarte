@@ -1,0 +1,15 @@
+<button mat-mini-fab color="accent" class="arrows" *ngIf="lstFotos.length > 1" style="float: left; left: -10px;"
+    (click)="mudarIndex('left')">
+    <mat-icon>keyboard_arrow_left</mat-icon>
+</button>
+<button mat-mini-fab color="accent" class="arrows" *ngIf="lstFotos.length > 1" style="float: right; right: -10px;"
+    (click)="mudarIndex('right')">
+    <mat-icon>keyboard_arrow_right</mat-icon>
+</button>
+<div [ngStyle]="{'background-image': 'url(' + lstFotos[index] + ')'}" class="foto"
+    (click)="linkImagem(lstFotos[index])">
+</div>
+<div class="rowIndex" *ngIf="lstFotos.length > 1">
+    <div *ngFor="let item of lstFotos; let i = index" class="indexMark" [ngClass]="i == index? 'indexMarkAtivo' : ''">
+    </div>
+</div>

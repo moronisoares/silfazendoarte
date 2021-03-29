@@ -1,0 +1,59 @@
+.uploadDiv {
+    width: 95%;
+    height: 40px;
+    display: inline-flex;
+    border: 1px dashed gray;
+    border-radius: 8px;
+    padding: 8px;
+    overflow-x: hidden;
+}
+
+.uploadDiv button {
+    min-width: 140px;
+}
+
+.cardContent {
+    overflow-x: hidden;
+    max-height: 80%;
+    margin-bottom: 60px;
+}
+
+.link {
+    color: #e91e63;
+    font-weight: 700;
+    margin-left: 36px;
+    padding-top: 8px;
+}
+
+.avisoNaoHaArquivos {
+    color: #444;
+    margin-left: 36px;
+    padding-top: 8px;
+}
+
+.form mat-form-field {
+    margin-right: 8px;
+}
+
+.divImg {
+    width: 120px;
+    height: 120px;
+    margin-left: 8px;
+    margin-right: 8px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    background-position: center;
+}
+
+.divImg mat-icon,
+.divImg a {
+    cursor: pointer;
+    z-index: 999;
+    color: #E91E63;
+    margin-left: 4px;
+    margin-right: 4px;
+    font-size: 20pt;
+}

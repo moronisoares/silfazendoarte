@@ -1,0 +1,49 @@
+<h1 mat-dialog-title>Cadastro de Produtos</h1>
+<div mat-dialog-content class="cardContent">
+    <form class="form" [formGroup]="validateForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Nome*</mat-label>
+            <input formControlName="Nome" matInput placeholder="Nome">
+            <mat-error *ngIf="validateForm.controls.Nome.invalid">Nome é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Valor*</mat-label>
+            <input formControlName="Valor" matInput placeholder="Valor" currencyMask
+                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',' }">
+            <mat-error *ngIf="validateForm.controls.Valor.invalid">Valor é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Tempo Estimado(dias)*</mat-label>
+            <input type="number" formControlName="TempoEstimado" matInput placeholder="Nome">
+            <mat-error *ngIf="validateForm.controls.TempoEstimado.invalid">Tempo Estimado é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline" style="width: 100%;">
+            <mat-label>Descrição*</mat-label>
+            <textarea formControlName="Descricao" matInput placeholder="Descrição"></textarea>
+            <mat-error *ngIf="validateForm.controls.Descricao.invalid">Descrição é obrigatória</mat-error>
+        </mat-form-field>
+        <mat-slide-toggle formControlName="Destaque">Destaque</mat-slide-toggle>
+    </form>
+    <br>
+    <p>Imagem do Produto*</p>
+    <div class="uploadDiv">
+        <button mat-flat-button color="primary" (click)="uploadFile()">Adicionar Imagem</button>
+        <p class="avisoNaoHaArquivos">Há {{fileList.length}} arquivo(s) anexados</p>
+        <mat-progress-bar *ngIf="uploadPercent" style="width: 100%;" mode="determinate"
+            value="{{ uploadPercent | async }}">
+        </mat-progress-bar>
+    </div>
+    <br><br><br><br>
+    <div *ngFor="let item of fileList" class="divImg" [ngStyle]="{'background-image' : 'url('+ item + ')'}">
+        <a [href]="item" target="_blank">
+            <mat-icon matSuffix>remove_red_eye</mat-icon>
+        </a>
+        <a (click)="deleteFile(item)">
+            <mat-icon matSuffix>delete_forever</mat-icon>
+        </a>
+    </div>
+</div>
+<div mat-dialog-actions class="cardActions">
+    <button mat-raised-button color="primary" (click)="salvar()" [disabled]="loading">Salvar</button>
+    <button mat-raised-button color="accent" (click)="voltar()">Voltar</button>
+</div>

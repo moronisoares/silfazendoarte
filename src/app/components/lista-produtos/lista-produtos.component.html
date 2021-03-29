@@ -1,0 +1,18 @@
+<mat-grid-list [cols]="app.deviceWidth > 1600? 8 : app.deviceWidth > 900? 6 : app.deviceWidth >= 768? 3 : 2"
+    [rowHeight]="app.deviceHeight < 570? '0.8:1' : '0.9:1'">
+    <mat-grid-tile *ngFor="let item of lstProdutos; let i = index" style="padding: 8px; margin-top: 12px!important"
+        [@transitionDestaques]="{value: null,params: {time: ((i+1) * 0.3) + 's' + ' ease'}}">
+        <mat-card class="cardProduto" (click)="detalhesProduto.emit(item)">
+            <img [src]="item.FilePath">
+            <mat-card-content class="cardContent">
+                <span style="font-weight: 600;">
+                    {{item.Nome}}
+                </span>
+                <br>
+                <span>
+                    {{item.Valor | currency:'BRL':true:'1.2-2'}}
+                </span>
+            </mat-card-content>
+        </mat-card>
+    </mat-grid-tile>
+</mat-grid-list>

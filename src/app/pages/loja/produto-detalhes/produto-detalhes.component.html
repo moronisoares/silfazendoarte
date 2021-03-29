@@ -1,0 +1,24 @@
+<mat-toolbar style="background-color:#E91E63" class="menu" *ngIf="app.deviceWidth < 768">
+    <a mat-dialog-close>
+        <mat-icon matSuffix style="vertical-align: sub; margin-right: 16px;">arrow_back</mat-icon>
+    </a>
+    <span>{{produto['Nome']}}</span>
+</mat-toolbar>
+<app-carrossel style="position: relative; top: 30px;" [lstFotos]="lstFotos"></app-carrossel>
+<div style="margin-top: 48px;">
+    <span style="font-weight: 600;"> {{produto['Nome']}}</span>
+    <p>{{produto['Descricao']}}</p>
+    <mat-form-field appearance="outline">
+        <mat-label>Quantidade</mat-label>
+        <input [(ngModel)]="quantidade" type="number" matInput placeholder="Quantidade" />
+    </mat-form-field>
+    <mat-form-field appearance="outline" style="width: 100%;">
+        <mat-label>Observação</mat-label>
+        <textarea [(ngModel)]="descricaoCliente" matInput placeholder="Observação"></textarea>
+    </mat-form-field>
+</div>
+<div mat-dialog-actions class="cardActions">
+    <button mat-raised-button color="accent" style="width: 100%;" (click)="adicionarCarrinho()">
+        <mat-icon>add_shopping_cart</mat-icon>Adicionar ao carrinho
+    </button>
+</div>

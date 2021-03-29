@@ -1,0 +1,21 @@
+.fab {
+    position: absolute;
+    right: 36px;
+    bottom: 36px;
+}
+
+.card {
+    width: 90%;
+    max-width: 800px;
+}
+
+.btnActions:hover {
+    transform: scale(1.05, 1.05);
+}
+
+.imgProduto {
+    width: 120px;
+    border-radius: 12px;
+    height: 120px;
+    margin-top: 16px;
+}

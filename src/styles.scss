@@ -1,1 +1,101 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+html {
+    overflow: hidden;
+}
+
+body {
+    overflow: hidden;
+    position: relative;
+    margin: 0;
+    padding: 0;
+}
+
+.mat-dialog-container {
+    padding-bottom: 4px !important;
+    .cardActions {
+        padding: 8px !important;
+        width: 97%;
+        position: absolute;
+        bottom: -5px;
+        right: 0;
+        left: 0;
+        margin-bottom: 8px !important;
+        flex-direction: row-reverse;
+        margin-bottom: 0;
+        padding-bottom: 0;
+        background-color: white;
+        border-top: 1px solid lightgray;
+        z-index: 9999;
+    }
+}
+
+.cardActions button {
+    margin-left: 8px;
+}
+.mat-dialog-container {
+    position: relative;
+}
+
+.snackbar {
+    height: 48px;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height: 16px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: rgba(253, 40, 88, 0.4);
+    border-radius: 8px;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #fd2858;
+}
+
+.menu {
+    background: #009688;
+    color: white;
+    position: fixed;
+    height: 60px;
+    top: 0px;
+    z-index: 11;
+    left: 0;
+}
+
+@media (max-width: 767px) {
+    .modal {
+        width: 100% !important;
+        height: 100% !important;
+        z-index: 9999 !important;
+        max-width: none !important;
+    }
+    app-modal-confirmacao {
+        width: 200px !important;
+        height: 160px !important;
+    }
+    ::-webkit-scrollbar {
+        width: 3px;
+        opacity: 0.8;
+    }
+    .mat-dialog-container .cardActions {
+        width: 95%;
+    }
+}

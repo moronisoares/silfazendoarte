@@ -1,0 +1,19 @@
+<mat-card class="card">
+    <mat-card-title class="cardTitle">
+        <img src="../../../assets/logoLoja.jpg" />
+    </mat-card-title>
+</mat-card>
+<div style="margin-top: 40px;">
+    <div class="divProdutos" [ngStyle]="{ 'max-height' : ((app.deviceHeight * 80 /100) - 40) + 'px'}">
+        <h3 style="margin-left: 16px; font-weight: 500;">Destaques</h3>
+        <app-lista-produtos [lstProdutos]="filtroDestaques()" (detalhesProduto)="detalhesProduto($event)">
+        </app-lista-produtos>
+        <br><br>
+        <h3 style="margin-left: 16px; font-weight: 500;">Produtos</h3>
+        <app-lista-produtos [lstProdutos]="lstProdutos" (detalhesProduto)="detalhesProduto($event)">
+        </app-lista-produtos>
+    </div>
+    <button mat-raised-button color="primary" class="btnCarrinho" (click)="verCarrinho()">
+        <mat-icon style="margin-left: -80px;margin-right: 80px;">shopping_cart</mat-icon>Ver Carrinho
+    </button>
+</div>

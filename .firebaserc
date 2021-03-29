@@ -1,0 +1,14 @@
+{
+  "projects": {
+    "default": "silfazendoarte-984f4"
+  },
+  "targets": {
+    "silfazendoarte-984f4": {
+      "hosting": {
+        "SilFazendoArte": [
+          "silfazendoarte-984f4"
+        ]
+      }
+    }
+  }
+}
