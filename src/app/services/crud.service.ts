@@ -19,7 +19,10 @@ export class CrudService {
   }
 
   salvar(obj, collection) {
-    var doc = this.CreateGuid();
+    const doc = this.CreateGuid();
+    if (obj.Id == null) {
+      obj.Id = doc;
+    }
     return this.db.collection(collection).doc(doc).set(obj);
   }
 
@@ -28,7 +31,8 @@ export class CrudService {
   }
 
   listarTodos(collection) {
-    return this.db.collection(collection).get();
+    const refCollection = this.db.collection(collection);
+    return refCollection.orderBy("Nome").get();
   }
 
   deletar(collection, id) {

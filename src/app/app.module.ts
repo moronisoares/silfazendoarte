@@ -8,11 +8,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { SafePipe } from './pipes/safe.pipe';
 import { MatIconModule } from '@angular/material/icon';
+import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.component';
+import {MatListModule} from '@angular/material/list';
+import { MatButtonModule } from '@angular/material/button';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SafePipe
+    SafePipe,
+    MenuLateralComponent
   ],
   imports: [
     BrowserModule,
@@ -20,7 +25,10 @@ import { MatIconModule } from '@angular/material/icon';
     BrowserAnimationsModule,
     MatToolbarModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatListModule,
+    MatButtonModule,
+    HttpClientModule,
   ],
   bootstrap: [AppComponent]
 })

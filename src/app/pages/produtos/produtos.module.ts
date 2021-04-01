@@ -4,8 +4,7 @@ import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule, Routes } from '@angular/router';
 import { ProdutosCadastroComponent } from './produtos-cadastro/produtos-cadastro.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-import { CurrencyMaskModule } from 'ng2-currency-mask';
-import { ModalConfirmacaoComponent } from 'src/app/components/modal-confirmacao/modal-confirmacao.component';
+
 const router: Routes = [
   { path: "", component: ProdutosComponent },
   { path: "cadastro", component: ProdutosCadastroComponent },
@@ -14,13 +13,11 @@ const router: Routes = [
 @NgModule({
   declarations: [
     ProdutosComponent,
-    ProdutosCadastroComponent,
-    ModalConfirmacaoComponent
+    ProdutosCadastroComponent
   ],
   imports: [
     SharedModule,
     MatProgressBarModule,
-    CurrencyMaskModule,
     RouterModule.forChild(router)
   ]
 })

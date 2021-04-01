@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { AppService } from './services/app.service';
 import { LoginService } from './services/login.service';
 
 @Component({
@@ -9,8 +10,9 @@ import { LoginService } from './services/login.service';
 })
 export class AppComponent {
   mostrarMenu: boolean = sessionStorage.getItem("l") == "true" ? true : false;
+  exibirMenuMobile: boolean = false;
 
-  constructor(private login: LoginService, private router: Router) {
+  constructor(private login: LoginService, private router: Router, public app: AppService) {
     this.login.isLogado.subscribe(
       value => {
         this.mostrarMenu = value;
@@ -20,5 +22,9 @@ export class AppComponent {
 
   sair() {
     this.router.navigate(['/']);
+  }
+  
+  esconderMenu() {
+    this.exibirMenuMobile = false
   }
 }

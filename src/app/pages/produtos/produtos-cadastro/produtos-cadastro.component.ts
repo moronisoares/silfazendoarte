@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, Inject, OnInit, Output } from '@angular/core';
 import { AngularFireStorage } from '@angular/fire/storage';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -41,7 +41,7 @@ export class ProdutosCadastroComponent implements OnInit {
       Descricao: [null, Validators.required],
       TempoEstimado: [null, Validators.required]
     })
-    
+
     if (this.params.produto) {
       this.validateForm.patchValue(this.params.produto);
       this.fileList = this.params.produto.FilePath;
@@ -85,7 +85,7 @@ export class ProdutosCadastroComponent implements OnInit {
   }
 
   voltar(): void {
-    this.dialogRef.close();
+    this.dialogRef.close({ reload: false });
   }
 
   salvar() {
@@ -101,9 +101,7 @@ export class ProdutosCadastroComponent implements OnInit {
       } else {
         this.crud.salvar(this.validateForm.value, 'produtos');
       }
-      setTimeout(() => {
-        location.reload();
-      }, 500)
+      this.dialogRef.close({ reload: true });
     } else {
       if (this.fileList.length == 0) {
         this.snackBar.open('Imagem é obrigatória', 'Fechar', { duration: 3000, verticalPosition: 'bottom', panelClass: ['snackbar'] });

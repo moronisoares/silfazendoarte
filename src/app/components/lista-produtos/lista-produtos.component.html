@@ -5,12 +5,12 @@
         <mat-card class="cardProduto" (click)="detalhesProduto.emit(item)">
             <img [src]="item.FilePath">
             <mat-card-content class="cardContent">
-                <span style="font-weight: 600;">
+                <span class="nomeProduto">
                     {{item.Nome}}
                 </span>
                 <br>
                 <span>
-                    {{item.Valor | currency:'BRL':true:'1.2-2'}}
+                    {{item.Valor | currency:'BRL':'symbol':'1.2-2'}}
                 </span>
             </mat-card-content>
         </mat-card>

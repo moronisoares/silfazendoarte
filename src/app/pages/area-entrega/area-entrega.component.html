@@ -1,16 +1,13 @@
 <mat-card-header>
-    <mat-card-title>Lista de produtos</mat-card-title>
+    <mat-card-title>Lista de Áreas de Entrega</mat-card-title>
 </mat-card-header>
 <div class="divWrapper">
     <mat-grid-list [cols]="app.retornaNumColsLista()" [rowHeight]="app.retornaNumRowsLista()">
-        <mat-grid-tile *ngFor="let item of lstProdutos">
+        <mat-grid-tile *ngFor="let item of lstAreasEntrega">
             <mat-card class="card">
-                <mat-grid-list cols="4" [rowHeight]="app.deviceWidth >= 1600? '2:1' : '1:1'">
+                <mat-grid-list cols="3" [rowHeight]="app.retornaNumRowsLista()">
                     <mat-grid-tile>
-                        <img mat-card-image [src]="item.FilePath[0]" class="imgProduto">
-                    </mat-grid-tile>
-                    <mat-grid-tile>
-                        <p class="nomeProduto">{{item.Nome}}</p>
+                        <p style="font-weight: 600; font-size: 12pt; text-align: center;">{{item.Nome}}</p>
                     </mat-grid-tile>
                     <mat-grid-tile>
                         <p style="font-size: 10pt; text-align: center;">{{item.Valor | currency:'BRL':true:'1.2-2'}}</p>
@@ -19,7 +16,7 @@
                         <button mat-icon-button color="accent" class="btnActions" (click)="modalCadastro(item)">
                             <mat-icon>mode_edit</mat-icon>
                         </button>
-                        <button mat-icon-button color="accent" class="btnActions" (click)="deleteProduto(item)">
+                        <button mat-icon-button color="accent" class="btnActions" (click)="deleteAreaEntrega(item)">
                             <mat-icon>delete_forever</mat-icon>
                         </button>
                     </mat-grid-tile>
@@ -28,6 +25,6 @@
         </mat-grid-tile>
     </mat-grid-list>
 </div>
-<button mat-fab class="fab" color="accent" aria-label="Adicionar novo produto" (click)="modalCadastro()">
+<button mat-fab class="fab" color="accent" aria-label="Adicionar nova Área de Entrega" (click)="modalCadastro()">
     <mat-icon>add</mat-icon>
 </button>

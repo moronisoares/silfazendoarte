@@ -1,34 +1,32 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { DomSanitizer } from '@angular/platform-browser';
 import { ModalConfirmacaoComponent } from 'src/app/components/modal-confirmacao/modal-confirmacao.component';
 import { AppService } from 'src/app/services/app.service';
 import { CrudService } from 'src/app/services/crud.service';
-import { ProdutosCadastroComponent } from './produtos-cadastro/produtos-cadastro.component';
+import { AreaEntregaCadastroComponent } from './area-entrega-cadastro/area-entrega-cadastro.component';
 
 @Component({
-  selector: 'app-produtos',
-  templateUrl: './produtos.component.html',
-  styleUrls: ['./produtos.component.scss']
+  selector: 'app-area-entrega',
+  templateUrl: './area-entrega.component.html',
+  styleUrls: ['./area-entrega.component.scss']
 })
-export class ProdutosComponent implements OnInit {
+export class AreaEntregaComponent implements OnInit {
 
-  lstProdutos: object[];
+  lstAreasEntrega: object[] = [];
 
   constructor(private dialog: MatDialog,
     private crud: CrudService,
-    public _sanitizer: DomSanitizer,
     public app: AppService) { }
 
   ngOnInit(): void {
-    this.listarTodos();
+    this.listarTodos()
   }
 
-  modalCadastro(produto = null) {
-    this.dialog.open(ProdutosCadastroComponent, {
+  modalCadastro(areaEntrega = null) {
+    this.dialog.open(AreaEntregaCadastroComponent, {
       panelClass: 'modal',
       data: {
-        produto
+        areaEntrega
       }
     })
       .afterClosed()
@@ -40,14 +38,14 @@ export class ProdutosComponent implements OnInit {
   }
 
   listarTodos() {
-    this.crud.listarTodos('produtos').then((collection) => {
-      this.lstProdutos = collection.docs.map((doc) => {
+    this.crud.listarTodos('area-entrega').then((collection) => {
+      this.lstAreasEntrega = collection.docs.map((doc) => {
         return { Id: doc.id, ...doc.data() }
       })
     })
   }
 
-  deleteProduto(produto) {
+  deleteAreaEntrega(produto) {
     this.dialog.open(ModalConfirmacaoComponent, {
       height: '180px',
       width: '300px',

@@ -1,0 +1,24 @@
+<div class="esconderFundo" (click)="escondeMenu()" @transition>
+</div>
+<div class="menuLateral" @transitionMenu id="menu">
+    <div class="divLogo">
+        <img src="../../../assets/logo.jpg" class="logo" />
+    </div>
+    <mat-nav-list>
+        <a class="menuLink" routerLinkActive="active" mat-list-item routerLink="/home">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </a>
+        <a class="menuLink" routerLinkActive="active" mat-list-item routerLink="/produtos">
+            <mat-icon>shopping_bag</mat-icon>
+            <span>Produtos</span>
+        </a>
+        <a class="menuLink" routerLinkActive="active" mat-list-item routerLink="/area-entrega">
+            <mat-icon>gps_fixed</mat-icon>
+            <span>Áreas de Entrega</span>
+        </a>
+        <a class="menuLink black" mat-list-item routerLink="/">
+            <mat-icon>close</mat-icon>Sair
+        </a>
+    </mat-nav-list>
+</div>

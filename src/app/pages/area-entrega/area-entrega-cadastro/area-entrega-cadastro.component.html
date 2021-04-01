@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Cadastro de Areas de Entrega</h1>
+<div mat-dialog-content class="cardContent">
+    <form class="form" [formGroup]="validateForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Nome*</mat-label>
+            <input formControlName="Nome" matInput placeholder="Nome">
+            <mat-error *ngIf="validateForm.controls.Nome.invalid">Nome é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Valor*</mat-label>
+            <input formControlName="Valor" matInput placeholder="Valor" currencyMask
+                [options]="{ prefix: 'R$ ', thousands: '.', decimal: ',', align: 'left' }">
+            <mat-error *ngIf="validateForm.controls.Valor.invalid">Valor é obrigatório</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions class="cardActions">
+    <button mat-raised-button color="primary" (click)="salvar()" [disabled]="loading">Salvar</button>
+    <button mat-raised-button color="accent" (click)="voltar()">Voltar</button>
+</div>

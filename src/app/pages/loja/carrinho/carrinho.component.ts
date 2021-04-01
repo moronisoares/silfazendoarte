@@ -3,6 +3,8 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalConfirmacaoComponent } from 'src/app/components/modal-confirmacao/modal-confirmacao.component';
 import { AppService } from 'src/app/services/app.service';
+import { LojaService } from 'src/app/services/loja.service';
+import { EntregaComponent } from '../entrega/entrega.component';
 
 @Component({
   selector: 'app-carrinho',
@@ -15,7 +17,11 @@ export class CarrinhoComponent implements OnInit {
   total: number = 0;
   tempoEstimado: number = 0;
   dataEstimada: string;
-  constructor(public app: AppService, public datePipe: DatePipe, private dialog: MatDialog) { }
+  taxaEntrega: string;
+  taxaEntregaNumber: number;
+  endereco: object;
+
+  constructor(public app: AppService, public datePipe: DatePipe, private dialog: MatDialog, private loja: LojaService) { }
 
   ngOnInit(): void {
     const localStorageCarrinho: string = localStorage.getItem("carrinho");
@@ -58,26 +64,29 @@ export class CarrinhoComponent implements OnInit {
     }
   }
 
-  fazerPedido() {
-    let stringProdutos: string = "";
-    this.lstProdutos.forEach((item: object) => {
-      stringProdutos += `Produto: ${item['Quantidade']}x ${item['Nome']}
-        \nValor: R$ ${item['Valor'].toFixed(2).replace(".", ",")}
-        \nObservação: ${item['DescricaoCliente'] ? item['DescricaoCliente'] : 'Não Informado'}
-        \n----------------------------
-      `;
+  modalEndereco() {
+    this.dialog.open(EntregaComponent, {
+      panelClass: 'modal',
+      height: '700px',
+      width: '900px'
     })
-    const mensagem = `Gostaria de encomendar os seguintes itens:
-      \n${stringProdutos}
-      \nData Estimada: ${this.dataEstimada}
-      \nValor Total: R$ ${this.total.toFixed(2).replace(".", ",")}
-    `;
+      .afterClosed()
+      .subscribe((response: object) => {
+        const taxaEntrega = response['taxaEntrega'];
+        this.endereco = response['form'];
+        if (response['fazerPedido']) {
+          if (taxaEntrega) {
+            this.taxaEntregaNumber = taxaEntrega;
+            this.total += taxaEntrega;
+            this.taxaEntrega = "R$ " + taxaEntrega.toFixed(2).toString();
+          } else {
+            this.taxaEntrega = "A combinar";
+          }
+        }
+      })
+  }
 
-    window.open(
-      "https://api.whatsapp.com/send?phone=" +
-      "+5521994684609" +
-      "&text=" +
-      window.encodeURIComponent(mensagem)
-    );
+  fazerPedido() {
+    this.loja.fazerPedido(this.lstProdutos, this.dataEstimada, this.total, this.taxaEntrega, this.endereco);
   }
 }

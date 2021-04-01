@@ -14,12 +14,15 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HttpClientModule } from '@angular/common/http';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { ModalConfirmacaoComponent } from '../components/modal-confirmacao/modal-confirmacao.component';
+import { CurrencyMaskModule } from 'ng2-currency-mask';
 
 @NgModule({
   declarations: [
+    ModalConfirmacaoComponent
   ],
   imports: [
     CommonModule,
@@ -39,7 +42,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatGridListModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatToolbarModule
+    MatToolbarModule,
+    CurrencyMaskModule
   ],
   exports: [
     CommonModule,
@@ -54,7 +58,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
     MatGridListModule,
     MatSnackBarModule,
     MatDialogModule,
-    MatToolbarModule
+    MatToolbarModule,
+    CurrencyMaskModule
   ],
   providers: [
     { provide: BUCKET, useValue: 'gs://silfazendoarte-984f4.appspot.com' },

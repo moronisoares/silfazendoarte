@@ -4,6 +4,12 @@
     </a>
     <span>Carrinho</span>
 </mat-toolbar>
+<h1 mat-dialog-title *ngIf="app.deviceWidth >= 768">
+    <button mat-dialog-close mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
+        <mat-icon style="vertical-align: sub;">arrow_back_ios_new</mat-icon>
+    </button>
+    Carrinho
+</h1>
 <div [ngStyle]="{ 'max-height' : ((app.deviceHeight * 40 /100) - 40) + 'px'}"
     style="overflow-y: auto; margin-top: 40px;">
     <mat-list>
@@ -11,7 +17,7 @@
             <img mat-list-icon style="width: 60px; height: 60px; border-radius: 12px;" [src]="item.FilePath[0]" />
             <div mat-line>{{item.Quantidade}}x {{item.Nome}}</div>
             <div mat-line>{{item.DescricaoCliente}} </div>
-            <span class="valor">{{item.Valor * item.Quantidade | currency:'BRL':true:'1.2-2'}}</span>
+            <span class="valor">{{item.Valor * item.Quantidade | currency:'BRL':'symbol':'1.2-2'}}</span>
             <button mat-icon-button color="accent" style="float: right;" (click)="deletarProduto(item.Id)">
                 <mat-icon>delete_forever</mat-icon>
             </button>
@@ -35,13 +41,30 @@
             <p style="white-space: break-spaces;">Tempo pode variar de acordo com a quantidade de pedidos.</p>
         </div>
     </mat-list-item>
+    <mat-list-item *ngIf="taxaEntrega">
+        <div mat-line>
+            <span style="font-weight: 600;">Subtotal:</span>
+            <span class="valor">{{ total - taxaEntregaNumber | currency:'BRL':'symbol':'1.2-2' }}</span>
+        </div>
+    </mat-list-item>
+    <mat-list-item *ngIf="taxaEntrega">
+        <div mat-line>
+            <span style="font-weight: 600;">Taxa de Entrega:</span>
+            <span class="valor">{{ taxaEntrega }}</span>
+        </div>
+    </mat-list-item>
     <mat-list-item>
         <div mat-line>
             <span style="font-weight: 600;">Total a pagar:</span>
-            <span class="valor">{{ total | currency:'BRL':true:'1.2-2' }}</span>
+            <span class="valor">{{ total | currency:'BRL':'symbol':'1.2-2' }}</span>
         </div>
     </mat-list-item>
 </mat-list>
-<button mat-raised-button color="accent" class="btnPedir" (click)="fazerPedido()">
+<button *ngIf="lstProdutos.length > 0 && !taxaEntrega" mat-raised-button color="accent" class="btnPedir"
+    (click)="modalEndereco()">
+    Preencher Endereço
+</button>
+<button *ngIf="lstProdutos.length > 0 && taxaEntrega" mat-raised-button color="accent" class="btnPedir"
+    (click)="fazerPedido()">
     Fazer Pedido
 </button>

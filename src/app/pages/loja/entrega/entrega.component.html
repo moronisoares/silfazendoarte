@@ -1,0 +1,56 @@
+<mat-toolbar style="background-color:#E91E63" class="menu" *ngIf="app.deviceWidth < 768">
+    <a mat-dialog-close>
+        <mat-icon matSuffix style="vertical-align: sub; margin-right: 16px;">arrow_back</mat-icon>
+    </a>
+    <span>Carrinho</span>
+</mat-toolbar>
+<h1 mat-dialog-title *ngIf="app.deviceWidth >= 768">
+    <button mat-dialog-close mat-icon-button color="accent" aria-label="Example icon button with a menu icon">
+        <mat-icon style="vertical-align: sub;">arrow_back_ios_new</mat-icon>
+    </button>
+    Entrega
+</h1>
+<div style="overflow-y: auto; overflow-x: hidden; margin-top: 40px; padding-bottom: 40px;">
+    <form class="form" [formGroup]="validateForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Nome*</mat-label>
+            <input formControlName="Nome" matInput placeholder="Nome">
+            <mat-error *ngIf="validateForm.controls.Nome.invalid">Nome é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>CEP*</mat-label>
+            <input formControlName="CEP" matInput placeholder="CEP" mask="00000-000" (blur)="buscarCEP()">
+            <mat-error *ngIf="validateForm.controls.CEP.invalid">CEP é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Estado*</mat-label>
+            <input readonly formControlName="Estado" matInput placeholder="Estado">
+            <mat-error *ngIf="validateForm.controls.Estado.invalid" readonly>Estado é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Cidade*</mat-label>
+            <input formControlName="Cidade" matInput placeholder="Cidade">
+            <mat-error *ngIf="validateForm.controls.Cidade.invalid" readonly>Cidade é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Bairro*</mat-label>
+            <input formControlName="Bairro" matInput placeholder="Bairro">
+            <mat-error *ngIf="validateForm.controls.Bairro.invalid" readonly>Bairro é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Rua*</mat-label>
+            <input formControlName="Rua" matInput placeholder="Rua">
+            <mat-error *ngIf="validateForm.controls.Rua.invalid">Rua é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+            <mat-label>Número*</mat-label>
+            <input formControlName="Numero" matInput placeholder="Número">
+            <mat-error *ngIf="validateForm.controls.Numero.invalid">Número é obrigatório</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div class="rowBtn">
+    <button mat-raised-button color="accent" class="btnPedir" (click)="setTaxaEntrega()">
+        Confirmar Endereço
+    </button>
+</div>

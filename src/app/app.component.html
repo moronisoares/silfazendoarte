@@ -1,12 +1,29 @@
-<mat-toolbar class="menu" color="primary" *ngIf="mostrarMenu">
-    <a (click)="sair()">
-        <mat-icon matSuffix style="vertical-align: sub; margin-right: 16px;">arrow_back</mat-icon>
-    </a>
-    <span>Administrador SilFazendoArte</span>
+<mat-toolbar class="menu" *ngIf="mostrarMenu">
+    <button mat-icon-button (click)="exibirMenuMobile = true" *ngIf="app.deviceWidth < 768">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <span *ngIf="app.deviceWidth < 768">Sil Fazendo Arte</span>
+    <img src="../../../assets/logo.jpg" class="logo" *ngIf="app.deviceWidth >= 768"/>
+    <div class="rowMenuLinks" *ngIf="app.deviceWidth >= 768">
+        <a class="menuLink" routerLinkActive="active" routerLink="/home">
+            <mat-icon>home</mat-icon>
+            <span>Home</span>
+        </a>
+        <a class="menuLink" routerLinkActive="active" routerLink="/produtos">
+            <mat-icon>shopping_bag</mat-icon>
+            <span>Produtos</span>
+        </a>
+        <a class="menuLink" routerLinkActive="active" routerLink="/area-entrega">
+            <mat-icon>gps_fixed</mat-icon>
+            <span>Áreas de Entrega</span>
+        </a>
+        <a class="menuLink" style="float: right;" routerLink="/">Sair</a>
+    </div>
 </mat-toolbar>
-<div class="geral">
+<app-menu-lateral *ngIf="exibirMenuMobile" (esconderMenu)="esconderMenu()"></app-menu-lateral>
+<div class="geral" [ngClass]="mostrarMenu? 'mostrarMenu' : ''">
     <mat-card class="card"
-        [ngStyle]="!mostrarMenu? {'background-color': 'transparent', 'box-shadow': 'none', 'margin-top': '40px'} : {'background-color': '#FAFAFA', 'margin-top': '100px'}">
+        [ngStyle]="!mostrarMenu? {'background-color': 'transparent', 'box-shadow': 'none'} : {'background-color': '#FAFAFA'}">
         <router-outlet></router-outlet>
     </mat-card>
 </div>

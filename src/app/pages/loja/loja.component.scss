@@ -1,3 +1,4 @@
+@import '../../../variables.scss';
 .card {
     width: 75%;
     margin: auto auto;
@@ -18,22 +19,23 @@
 .divProdutos {
     overflow-y: auto;
     overflow-x: hidden;
+    height: 73vh;
 }
 
 .btnCarrinho{
     width: 90%;
-    position: absolute;
-    bottom: 20px;
+    position: fixed;
+    bottom: 8px;
     left: 5%;
     z-index: 999;
 }
 
 @media (min-width: 768px) {
     .divProdutos {
-        height: 1900px;
+        height: 75vh;
     }
     .cardProduto {
-        width: 160px;
+        width: 200px;
         height: 220px;
         img {
             height: 160px;
@@ -45,7 +47,7 @@
     .card {
         width: 100%;
         position: absolute;
-        top: 16px;
+        top: 0;
         left: 0;
     }
 }

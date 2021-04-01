@@ -8,6 +8,8 @@ import { ListaProdutosComponent } from 'src/app/components/lista-produtos/lista-
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { MatListModule } from '@angular/material/list';
 import { DatePipe } from '@angular/common';
+import { EntregaComponent } from './entrega/entrega.component';
+import { NgxMaskModule } from 'ngx-mask';
 
 const router: Routes = [
   { path: "", component: LojaComponent },
@@ -20,11 +22,13 @@ const router: Routes = [
     ProdutoDetalhesComponent,
     CarrosselComponent,
     ListaProdutosComponent,
-    CarrinhoComponent
+    CarrinhoComponent,
+    EntregaComponent
   ],
   imports: [
     SharedModule,
     MatListModule,
+    NgxMaskModule.forRoot(),
     RouterModule.forChild(router)
   ],
   providers: [

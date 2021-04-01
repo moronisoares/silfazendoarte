@@ -1,5 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
-
 html,
 body {
     height: 100%;
@@ -49,6 +48,18 @@ body {
     height: 48px;
 }
 
+.divWrapper {
+    overflow-y: auto;
+    overflow-x: hidden;
+    max-height: 90%;
+}
+
+.fab {
+    position: fixed !important;
+    right: 4px;
+    bottom: 4px;
+}
+
 ::-webkit-scrollbar {
     width: 8px;
     height: 16px;
@@ -76,7 +87,7 @@ body {
     position: fixed;
     height: 60px;
     top: 0px;
-    z-index: 11;
+    z-index: 999;
     left: 0;
 }
 
@@ -97,5 +108,9 @@ body {
     }
     .mat-dialog-container .cardActions {
         width: 95%;
+    }
+    .cardActions {
+        position: sticky!important;
+        bottom: -8px;
     }
 }
