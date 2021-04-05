@@ -23,7 +23,7 @@ export class AppComponent {
   sair() {
     this.router.navigate(['/']);
   }
-  
+
   esconderMenu() {
     this.exibirMenuMobile = false
   }

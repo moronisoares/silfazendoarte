@@ -25,6 +25,8 @@ export class AreaEntregaComponent implements OnInit {
   modalCadastro(areaEntrega = null) {
     this.dialog.open(AreaEntregaCadastroComponent, {
       panelClass: 'modal',
+      width: "450px",
+      height: "320px",
       data: {
         areaEntrega
       }

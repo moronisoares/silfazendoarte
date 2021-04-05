@@ -12,6 +12,8 @@ import { MenuLateralComponent } from './components/menu-lateral/menu-lateral.com
 import {MatListModule} from '@angular/material/list';
 import { MatButtonModule } from '@angular/material/button';
 import { HttpClientModule } from '@angular/common/http';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatListModule,
     MatButtonModule,
     HttpClientModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
   ],
   bootstrap: [AppComponent]
 })

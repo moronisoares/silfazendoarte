@@ -41,7 +41,7 @@
             <p style="white-space: break-spaces;">Tempo pode variar de acordo com a quantidade de pedidos.</p>
         </div>
     </mat-list-item>
-    <mat-list-item *ngIf="taxaEntrega">
+    <mat-list-item *ngIf="taxaEntrega && taxaEntregaNumber > 0">
         <div mat-line>
             <span style="font-weight: 600;">Subtotal:</span>
             <span class="valor">{{ total - taxaEntregaNumber | currency:'BRL':'symbol':'1.2-2' }}</span>

@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalConfirmacaoComponent } from 'src/app/components/modal-confirmacao/modal-confirmacao.component';
 import { AppService } from 'src/app/services/app.service';
+import { CrudService } from 'src/app/services/crud.service';
 import { LojaService } from 'src/app/services/loja.service';
 import { EntregaComponent } from '../entrega/entrega.component';
 
@@ -18,10 +19,10 @@ export class CarrinhoComponent implements OnInit {
   tempoEstimado: number = 0;
   dataEstimada: string;
   taxaEntrega: string;
-  taxaEntregaNumber: number;
+  taxaEntregaNumber: number = 0;
   endereco: object;
 
-  constructor(public app: AppService, public datePipe: DatePipe, private dialog: MatDialog, private loja: LojaService) { }
+  constructor(public app: AppService, public datePipe: DatePipe, private dialog: MatDialog, private loja: LojaService, private crud: CrudService) { }
 
   ngOnInit(): void {
     const localStorageCarrinho: string = localStorage.getItem("carrinho");
@@ -87,6 +88,16 @@ export class CarrinhoComponent implements OnInit {
   }
 
   fazerPedido() {
+    const pedido = {
+      Id: null,
+      ValorTotal: this.total,
+      TaxaEntrega: this.taxaEntrega,
+      ValorTotalSemTaxa: this.total - this.taxaEntregaNumber,
+      DatEstimada: this.dataEstimada,
+      LstProdutos: this.lstProdutos,
+      Endereco: this.endereco
+    }
+    this.crud.salvar(pedido, 'pedidos');
     this.loja.fazerPedido(this.lstProdutos, this.dataEstimada, this.total, this.taxaEntrega, this.endereco);
   }
 }

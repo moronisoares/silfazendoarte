@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ModalConfirmacaoComponent } from 'src/app/components/modal-confirmacao/modal-confirmacao.component';
 import { AppService } from 'src/app/services/app.service';
 import { CrudService } from 'src/app/services/crud.service';
 import { LoginService } from 'src/app/services/login.service';
@@ -14,8 +15,27 @@ import { ProdutoDetalhesComponent } from './produto-detalhes/produto-detalhes.co
 export class LojaComponent implements OnInit {
 
   lstProdutos: object[] = [];
-
-  constructor(private crud: CrudService, private loginService: LoginService, public app: AppService, private dialog: MatDialog) { }
+  promptEvent: any;
+  
+  constructor(private crud: CrudService, private loginService: LoginService, public app: AppService, private dialog: MatDialog) {
+    window.addEventListener('beforeinstallprompt', event => {
+      this.promptEvent = event;
+      this.dialog.open(ModalConfirmacaoComponent, {
+        width: "400px",
+        height: "240px",
+        data: {
+          title: "Deseja instalar esse app?",
+          msg: "Isso não ocupará espaço em seu dispositivo e irá facilitar a visualização dos produtos :)"
+        }
+      })
+        .afterClosed()
+        .subscribe((result) => {
+          if (result == true) {
+            this.promptEvent.prompt();
+          }
+        })
+    });
+  }
 
   ngOnInit(): void {
     this.listarProdutos()

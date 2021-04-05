@@ -1,0 +1,16 @@
+{
+  "name": "SilFazendoArte",
+  "short_name": "SIL",
+  "theme_color": "#e91e63",
+  "background_color": "#f8f8f8",
+  "display": "fullscreen",
+  "scope": "./",
+  "start_url": "./loja",
+  "icons": [
+    {
+      "src": "assets/iconeSil.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

@@ -53,7 +53,7 @@ export class LoginComponent implements OnInit {
       if (login.value !== "sil") {
         login.setErrors({ error: "Login incorreto" });
       }
-      if (senha.value !== "123") {
+      if (senha.value !== "SMJR250901") {
         senha.setErrors({ error: "Senha incorreta" });
       }
       return;

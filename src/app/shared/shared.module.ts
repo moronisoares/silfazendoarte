@@ -15,10 +15,10 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { HttpClientModule } from '@angular/common/http';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { MatDialogModule } from '@angular/material/dialog';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { ModalConfirmacaoComponent } from '../components/modal-confirmacao/modal-confirmacao.component';
 import { CurrencyMaskModule } from 'ng2-currency-mask';
+import { MatDialogModule } from '@angular/material/dialog';
+import { ModalConfirmacaoComponent } from '../components/modal-confirmacao/modal-confirmacao.component';
 
 @NgModule({
   declarations: [
@@ -41,8 +41,8 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     AngularFirestoreModule,
     MatGridListModule,
     MatSnackBarModule,
-    MatDialogModule,
     MatToolbarModule,
+    MatDialogModule,
     CurrencyMaskModule
   ],
   exports: [
@@ -57,8 +57,8 @@ import { CurrencyMaskModule } from 'ng2-currency-mask';
     MatSlideToggleModule,
     MatGridListModule,
     MatSnackBarModule,
-    MatDialogModule,
     MatToolbarModule,
+    MatDialogModule,
     CurrencyMaskModule
   ],
   providers: [
