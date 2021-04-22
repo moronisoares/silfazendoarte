@@ -6,8 +6,44 @@
 
 .btnPedir{
     width: 90%;
-    position: absolute;
-    bottom: 20px;
     left: 5%;
     z-index: 999;
+}
+
+.rowBtn {
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    background-color: white;
+    padding-top: 4px;
+    position: absolute;
+    padding-bottom: 4px;
+    border-top: 1px solid lightgray;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    width: 95%;
+    margin: auto;
+}
+
+.btnCupom {
+    width: 100%;
+    margin-left: 16px;
+    text-align: left;
+}
+
+.iconCupom {
+    font-size: 24pt;
+    vertical-align: text-bottom;
+}
+
+@media (max-width: 768px) {
+    .rowBtn {
+        position: fixed;
+    }
+    mat-list {
+        padding-bottom: 40px;
+    }
 }

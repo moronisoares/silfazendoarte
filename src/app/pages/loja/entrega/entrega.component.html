@@ -18,6 +18,11 @@
             <mat-error *ngIf="validateForm.controls.Nome.invalid">Nome é obrigatório</mat-error>
         </mat-form-field>
         <mat-form-field appearance="outline">
+            <mat-label>Telefone*</mat-label>
+            <input formControlName="Telefone" matInput placeholder="Telefone">
+            <mat-error *ngIf="validateForm.controls.Telefone.invalid">Telefone é obrigatório</mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
             <mat-label>CEP*</mat-label>
             <input formControlName="CEP" matInput placeholder="CEP" mask="00000-000" (blur)="buscarCEP()">
             <mat-error *ngIf="validateForm.controls.CEP.invalid">CEP é obrigatório</mat-error>

@@ -1,19 +1,32 @@
 <mat-card class="card">
     <mat-card-title class="cardTitle">
+        <span>Tel: (11) 94985-8180</span>
         <img src="../../../assets/logoLoja.jpg" />
+        <span>CNPJ: 41487839/000183</span>
     </mat-card-title>
 </mat-card>
-<div style="margin-top: 40px;">
-    <div class="divProdutos">
-        <h3 style="margin-left: 16px; font-weight: 500;">Destaques</h3>
+<div class="row">
+    <div class="divProdutos" style="margin-top: 40px;">
+        <h3 class="destaqueTexto">Destaques</h3>
         <app-lista-produtos [lstProdutos]="filtroDestaques()" (detalhesProduto)="detalhesProduto($event)">
         </app-lista-produtos>
         <br><br>
-        <h3 style="margin-left: 16px; font-weight: 500;">Produtos</h3>
+        <h3 class="destaqueTexto">Produtos</h3>
         <app-lista-produtos [lstProdutos]="lstProdutos" (detalhesProduto)="detalhesProduto($event)">
         </app-lista-produtos>
     </div>
+    <div id="carrinho" *ngIf="app.deviceWidth > 768">
+        <span class="destaqueTexto" [matBadge]="qtdProdutosCarrinho" matBadgeColor="accent"
+            [matBadgeHidden]="!qtdProdutosCarrinho" matBadgeSize="medium" matBadgeOverlap="false">Carrinho</span>
+        <app-lista-produtos-carrinho [lstProdutos]="carrinho"></app-lista-produtos-carrinho>
+        <button *ngIf="app.deviceWidth > 768" mat-raised-button color="primary" class="btnCarrinho"
+            (click)="verCarrinho()">
+            <mat-icon style="margin-left: -80px;margin-right: 80px;">shopping_cart</mat-icon>Ir para o Carrinho
+        </button>
+    </div>
 </div>
-<button mat-raised-button color="primary" class="btnCarrinho" (click)="verCarrinho()">
+<button *ngIf="app.deviceWidth <= 768" mat-raised-button color="primary" class="btnCarrinho"
+    [matBadge]="qtdProdutosCarrinho" matBadgeColor="accent" [matBadgeHidden]="!qtdProdutosCarrinho"
+    matBadgeSize="medium" (click)="verCarrinho()">
     <mat-icon style="margin-left: -80px;margin-right: 80px;">shopping_cart</mat-icon>Ver Carrinho
 </button>

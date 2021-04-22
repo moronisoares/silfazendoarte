@@ -10,21 +10,14 @@
     </button>
     Carrinho
 </h1>
-<div [ngStyle]="{ 'max-height' : ((app.deviceHeight * 40 /100) - 40) + 'px'}"
-    style="overflow-y: auto; margin-top: 40px;">
-    <mat-list>
-        <mat-list-item *ngFor="let item of lstProdutos; let i = index">
-            <img mat-list-icon style="width: 60px; height: 60px; border-radius: 12px;" [src]="item.FilePath[0]" />
-            <div mat-line>{{item.Quantidade}}x {{item.Nome}}</div>
-            <div mat-line>{{item.DescricaoCliente}} </div>
-            <span class="valor">{{item.Valor * item.Quantidade | currency:'BRL':'symbol':'1.2-2'}}</span>
-            <button mat-icon-button color="accent" style="float: right;" (click)="deletarProduto(item.Id)">
-                <mat-icon>delete_forever</mat-icon>
-            </button>
-        </mat-list-item>
-    </mat-list>
-</div>
+<app-lista-produtos-carrinho [lstProdutos]="lstProdutos" (atualizaInfoProdutos)="listarInformacoesProdutos()">
+</app-lista-produtos-carrinho>
 <br>
+<div class="row" *ngIf="lstProdutos.length > 0 && taxaEntrega">
+    <mat-icon class="iconCupom">redeem</mat-icon>
+    <button mat-raised-button color="accent" class="btnCupom" (click)="modalCupom()">Adicionar Cupom de
+        Desconto</button>
+</div>
 <mat-list>
     <mat-list-item>
         <div mat-line>
@@ -44,13 +37,22 @@
     <mat-list-item *ngIf="taxaEntrega && taxaEntregaNumber > 0">
         <div mat-line>
             <span style="font-weight: 600;">Subtotal:</span>
-            <span class="valor">{{ total - taxaEntregaNumber | currency:'BRL':'symbol':'1.2-2' }}</span>
+            <span class="valor">
+                {{ (valorDesconto? ((total - taxaEntregaNumber) + valorDesconto) : (total -
+                taxaEntregaNumber)) | currency:'BRL':'symbol':'1.2-2' }}
+            </span>
         </div>
     </mat-list-item>
     <mat-list-item *ngIf="taxaEntrega">
         <div mat-line>
             <span style="font-weight: 600;">Taxa de Entrega:</span>
             <span class="valor">{{ taxaEntrega }}</span>
+        </div>
+    </mat-list-item>
+    <mat-list-item *ngIf="valorDesconto">
+        <div mat-line>
+            <span style="font-weight: 600;">Desconto:</span>
+            <span class="valor">- {{ valorDesconto | currency:'BRL':'symbol':'1.2-2'}}</span>
         </div>
     </mat-list-item>
     <mat-list-item>
@@ -60,11 +62,13 @@
         </div>
     </mat-list-item>
 </mat-list>
-<button *ngIf="lstProdutos.length > 0 && !taxaEntrega" mat-raised-button color="accent" class="btnPedir"
-    (click)="modalEndereco()">
-    Preencher Endereço
-</button>
-<button *ngIf="lstProdutos.length > 0 && taxaEntrega" mat-raised-button color="accent" class="btnPedir"
-    (click)="fazerPedido()">
-    Fazer Pedido
-</button>
+<div class="rowBtn">
+    <button *ngIf="lstProdutos.length > 0 && !taxaEntrega" mat-raised-button color="accent" class="btnPedir"
+        (click)="modalEndereco()">
+        Preencher Endereço
+    </button>
+    <button *ngIf="lstProdutos.length > 0 && taxaEntrega" mat-raised-button color="accent" class="btnPedir"
+        (click)="fazerPedido()">
+        Fazer Pedido
+    </button>
+</div>

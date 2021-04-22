@@ -1,10 +1,12 @@
 import { DatePipe } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { ModalConfirmacaoComponent } from 'src/app/components/modal-confirmacao/modal-confirmacao.component';
 import { AppService } from 'src/app/services/app.service';
 import { CrudService } from 'src/app/services/crud.service';
 import { LojaService } from 'src/app/services/loja.service';
+import { AdicionarCupomComponent } from '../adicionar-cupom/adicionar-cupom.component';
 import { EntregaComponent } from '../entrega/entrega.component';
 
 @Component({
@@ -21,41 +23,25 @@ export class CarrinhoComponent implements OnInit {
   taxaEntrega: string;
   taxaEntregaNumber: number = 0;
   endereco: object;
+  valorDesconto: number;
 
-  constructor(public app: AppService, public datePipe: DatePipe, private dialog: MatDialog, private loja: LojaService, private crud: CrudService) { }
+  constructor(public app: AppService,
+    public datePipe: DatePipe,
+    private dialog: MatDialog,
+    private loja: LojaService,
+    private crud: CrudService,
+    private snackBar: MatSnackBar) { }
 
   ngOnInit(): void {
-    const localStorageCarrinho: string = localStorage.getItem("carrinho");
-    if (localStorageCarrinho) {
-      this.lstProdutos = JSON.parse(localStorageCarrinho);
-    }
+    this.lstProdutos = this.loja.listarProdutosCarrinho();
     this.listarInformacoesProdutos();
-  }
-
-  deletarProduto(id) {
-    this.dialog.open(ModalConfirmacaoComponent, {
-      height: '180px',
-      width: '300px',
-      data: {
-        title: "Excluir produto?",
-        msg: "Tem certeza que deseja excluir esse produto do carrinho?"
-      }
-    })
-      .afterClosed()
-      .subscribe((value) => {
-        if (value == true) {
-          var index = this.lstProdutos.findIndex(a => a['Id'] == id);
-          this.lstProdutos.splice(index, 1);
-          localStorage.setItem("carrinho", JSON.stringify(this.lstProdutos));
-          this.listarInformacoesProdutos()
-        }
-      })
   }
 
   listarInformacoesProdutos() {
     this.total = 0;
     this.tempoEstimado = 0;
     this.dataEstimada = "";
+    this.lstProdutos = this.loja.listarProdutosCarrinho();
     if (this.lstProdutos.length > 0) {
       this.lstProdutos.forEach((produto: any) => {
         this.total += produto.Valor * produto.Quantidade;
@@ -95,9 +81,40 @@ export class CarrinhoComponent implements OnInit {
       ValorTotalSemTaxa: this.total - this.taxaEntregaNumber,
       DatEstimada: this.dataEstimada,
       LstProdutos: this.lstProdutos,
-      Endereco: this.endereco
+      Endereco: this.endereco,
+      Cupom: sessionStorage.getItem("cupom")
     }
     this.crud.salvar(pedido, 'pedidos');
     this.loja.fazerPedido(this.lstProdutos, this.dataEstimada, this.total, this.taxaEntrega, this.endereco);
+  }
+
+  modalCupom() {
+    this.dialog.open(AdicionarCupomComponent,
+      {
+        height: '265px',
+        width: '320px',
+      }
+    ).afterClosed()
+      .subscribe((result: object) => {
+        if (result["valor"]) {
+          this.valorDesconto = result["valor"];
+          this.total = this.total - result["valor"];
+          this.snackBar.open('Cupom aplicado com sucesso!', 'Fechar',
+            {
+              duration: 4000,
+              verticalPosition: 'top',
+              panelClass: ['snackbar']
+            }
+          );
+        } else {
+          this.snackBar.open(result["msg"], 'Fechar',
+            {
+              duration: 4000,
+              verticalPosition: 'top',
+              panelClass: ['snackbar']
+            }
+          );
+        }
+      })
   }
 }

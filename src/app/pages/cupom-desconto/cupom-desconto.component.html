@@ -1,0 +1,30 @@
+<mat-card-header>
+    <mat-card-title>Lista de Cupons</mat-card-title>
+</mat-card-header>
+<div class="divWrapper">
+    <mat-grid-list [cols]="app.retornaNumColsLista()" [rowHeight]="app.retornaNumRowsLista()">
+        <mat-grid-tile *ngFor="let item of lstCupons">
+            <mat-card class="card">
+                <mat-grid-list cols="3" [rowHeight]="app.retornaNumRowsLista()">
+                    <mat-grid-tile>
+                        <p class="nomeProduto">{{item.Nome}}</p>
+                    </mat-grid-tile>
+                    <mat-grid-tile>
+                        <p style="font-size: 10pt; text-align: center;">{{item.Valor | currency:'BRL':true:'1.2-2'}}</p>
+                    </mat-grid-tile>
+                    <mat-grid-tile style="text-align: right;">
+                        <button mat-icon-button color="accent" class="btnActions" (click)="modalCadastro(item)">
+                            <mat-icon>mode_edit</mat-icon>
+                        </button>
+                        <button mat-icon-button color="accent" class="btnActions" (click)="deleteCupom(item)">
+                            <mat-icon>delete_forever</mat-icon>
+                        </button>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </mat-card>
+        </mat-grid-tile>
+    </mat-grid-list>
+</div>
+<button mat-fab class="fab" color="accent" aria-label="Adicionar novo produto" (click)="modalCadastro()">
+    <mat-icon>add</mat-icon>
+</button>

@@ -39,6 +39,10 @@ export class CrudService {
     return this.db.collection(collection).doc(id).delete();
   }
 
+  consultarPeloValor(collection, campo, valor) {
+    return this.db.collection(collection).where(campo, "==", valor).get();
+  }
+
   CreateGuid() {
     return this._p8() + this._p8(true) + this._p8(true) + this._p8();
   }

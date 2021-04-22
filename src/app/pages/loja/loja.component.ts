@@ -4,6 +4,7 @@ import { ModalConfirmacaoComponent } from 'src/app/components/modal-confirmacao/
 import { AppService } from 'src/app/services/app.service';
 import { CrudService } from 'src/app/services/crud.service';
 import { LoginService } from 'src/app/services/login.service';
+import { LojaService } from 'src/app/services/loja.service';
 import { CarrinhoComponent } from './carrinho/carrinho.component';
 import { ProdutoDetalhesComponent } from './produto-detalhes/produto-detalhes.component';
 
@@ -16,8 +17,16 @@ export class LojaComponent implements OnInit {
 
   lstProdutos: object[] = [];
   promptEvent: any;
-  
-  constructor(private crud: CrudService, private loginService: LoginService, public app: AppService, private dialog: MatDialog) {
+  qtdProdutosCarrinho: Number;
+  carrinho: object[] = [];
+
+  constructor(
+    private crud: CrudService,
+    private loginService: LoginService,
+    public app: AppService,
+    private dialog: MatDialog,
+    private loja: LojaService
+  ) {
     window.addEventListener('beforeinstallprompt', event => {
       this.promptEvent = event;
       this.dialog.open(ModalConfirmacaoComponent, {
@@ -41,6 +50,7 @@ export class LojaComponent implements OnInit {
     this.listarProdutos()
     sessionStorage.clear();
     this.loginService.isLogado.emit(false);
+    this.atualizarCarrinho()
   }
 
   listarProdutos() {
@@ -68,7 +78,8 @@ export class LojaComponent implements OnInit {
       data: {
         produto
       }
-    })
+    }).afterClosed()
+      .subscribe(() => this.atualizarCarrinho());
   }
 
   filtroDestaques() {
@@ -80,6 +91,12 @@ export class LojaComponent implements OnInit {
       width: '900px',
       height: '700px',
       panelClass: 'modal'
-    })
+    }).afterClosed()
+      .subscribe(() => this.atualizarCarrinho());
+  }
+
+  atualizarCarrinho() {
+    this.carrinho = this.loja.listarProdutosCarrinho();
+    this.qtdProdutosCarrinho = this.carrinho.length;
   }
 }

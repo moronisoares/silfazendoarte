@@ -1,0 +1,14 @@
+<h1 mat-dialog-title>Cupom de Desconto</h1>
+<div mat-dialog-content class="cardContent">
+    <form class="form" [formGroup]="validateForm">
+        <mat-form-field appearance="outline">
+            <mat-label>Nome do Cupom*</mat-label>
+            <input formControlName="Nome" matInput placeholder="Nome">
+            <mat-error *ngIf="validateForm.controls.Nome.invalid">Nome do cupom é obrigatório</mat-error>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions class="cardActions">
+    <button mat-raised-button color="primary" (click)="enviar()" [disabled]="loading">Enviar</button>
+    <button mat-raised-button color="accent" (click)="voltar()">Voltar</button>
+</div>

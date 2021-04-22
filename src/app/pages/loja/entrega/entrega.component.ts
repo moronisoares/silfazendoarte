@@ -30,7 +30,8 @@ export class EntregaComponent implements OnInit {
       Cidade: [null],
       Bairro: [null],
       Rua: [null, Validators.required],
-      Numero: [null, Validators.required]
+      Numero: [null, Validators.required],
+      Telefone: [null, Validators.required]
     });
   }
 
@@ -64,6 +65,7 @@ export class EntregaComponent implements OnInit {
       }
 
       if (this.validateForm.valid) {
+        sessionStorage.setItem("telefone", this.validateForm.controls["Telefone"].value);
         this.dialogRef.close({ fazerPedido: true, taxaEntrega, form: this.validateForm.value })
       }
     })

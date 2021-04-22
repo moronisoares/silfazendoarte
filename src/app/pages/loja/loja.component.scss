@@ -1,10 +1,10 @@
-@import '../../../variables.scss';
+@import "../../../variables.scss";
 .card {
     width: 75%;
     margin: auto auto;
     padding: 0;
     background-color: #f7f7f7;
-    height: 85px;
+    height: 95px;
     margin-top: -60px;
     .cardTitle {
         text-align: center;
@@ -13,21 +13,50 @@
             width: 120px;
             height: 75px;
         }
+        span {
+            font-size: 8pt;
+            vertical-align: sub;
+        }
     }
 }
 
 .divProdutos {
     overflow-y: auto;
     overflow-x: hidden;
-    height: 73vh;
+    height: 70vh;
+    width: 70%;
 }
 
-.btnCarrinho{
+#carrinho {
+    margin-top: 40px;
+    width: 28%;
+    margin-left: 16px;
+    height: 340px;
+    background-color: white;
+    border-radius: 12px;
+    padding: 8px;
+    padding-top: 16px;
+    box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
+}
+
+.destaqueTexto {
+    margin-left: 16px;
+    font-weight: 500;
+    font-size: 14pt;
+}
+
+.btnCarrinho {
     width: 90%;
     position: fixed;
     bottom: 8px;
     left: 5%;
     z-index: 999;
+}
+
+.row {
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 60px;
 }
 
 @media (min-width: 768px) {
@@ -41,6 +70,10 @@
             height: 160px;
         }
     }
+    .btnCarrinho {
+        position: relative;
+        top: 16px;
+    }
 }
 
 @media (max-width: 768px) {
@@ -49,5 +82,17 @@
         position: absolute;
         top: 0;
         left: 0;
+    }
+
+    .divProdutos {
+        width: 100%;
+    }
+}
+
+@media (max-width: 570px) {
+    .card .cardTitle img {
+        margin-top: 8px;
+        width: 95px;
+        height: 65px;
     }
 }

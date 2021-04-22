@@ -10,6 +10,9 @@ import { MatListModule } from '@angular/material/list';
 import { DatePipe } from '@angular/common';
 import { EntregaComponent } from './entrega/entrega.component';
 import { NgxMaskModule } from 'ngx-mask';
+import { AdicionarCupomComponent } from './adicionar-cupom/adicionar-cupom.component';
+import { MatBadgeModule } from '@angular/material/badge';
+import { ListaProdutosCarrinhoComponent } from 'src/app/components/lista-produtos-carrinho/lista-produtos-carrinho.component';
 
 const router: Routes = [
   { path: "", component: LojaComponent },
@@ -23,11 +26,14 @@ const router: Routes = [
     CarrosselComponent,
     ListaProdutosComponent,
     CarrinhoComponent,
-    EntregaComponent
+    EntregaComponent,
+    AdicionarCupomComponent,
+    ListaProdutosCarrinhoComponent
   ],
   imports: [
     SharedModule,
     MatListModule,
+    MatBadgeModule,
     NgxMaskModule.forRoot(),
     RouterModule.forChild(router)
   ],
